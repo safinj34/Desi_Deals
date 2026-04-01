@@ -30,15 +30,34 @@ for(let cartButtons of cartbtns){
         const totalPrice=getElementBy("total-price").innerText
         const currentTotal=Number(productPrice)+Number(totalPrice)
         getElementBy("total-price").innerText=currentTotal
-        const cartContainer=getElementBy("cart-container")
+        const cartContainer=getElementBy("items")
         const newCart=document.createElement("div")
         newCart.innerHTML=`<div class=" bg-gray-200 flex justify-between p-4 my-5 rounded-xl"><img class="w-10" src="${productImg}" alt=""><div><h2>${productTitle}</h2><h2><span>${productPrice}</span> Tk</h2></div></div>`
+       
         cartContainer.append(newCart)
-    
+    const quantity=getElementBy("total-items").innerText
+const currentQuantity=Number(quantity)+1
+getElementBy("total-items").innerText=currentQuantity
+
+
 
     })
     
 }
+
+
+document.getElementById("clear-button").addEventListener("click",function(){
+    const cartContainer=getElementBy("items")
+
+   
+    cartContainer.innerHTML=``
+    const resetPrice=getElementBy("total-price")
+    resetPrice.innerText=0
+    const resetItem=getElementBy("total-items")
+    resetItem.innerText=0
+})
+
+
 
 function getElementBy(id){
     const element=document.getElementById(id)
